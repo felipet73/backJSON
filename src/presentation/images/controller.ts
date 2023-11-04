@@ -17,7 +17,7 @@ export class ImageController {
     console.log(imagePath);
 
     if ( !fs.existsSync( imagePath ) ) {
-      return res.status(404).send('Image not found')
+      return res.status(404).send('File not found')
     }
 
     res.sendFile( imagePath );
