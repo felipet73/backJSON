@@ -1,0 +1,61 @@
+{
+	"metadata": {
+		"version": 4.6,
+		"type": "Object",
+		"generator": "Object3D.toJSON"
+	},
+	"geometries": [
+		{
+			"uuid": "44a46c24-88d0-4333-887c-4113936a356a",
+			"type": "TubeGeometry",
+			"path": {
+				"metadata": {
+					"version": 4.6,
+					"type": "Curve",
+					"generator": "Curve.toJSON"
+				},
+				"arcLengthDivisions": 200,
+				"type": "CatmullRomCurve3",
+				"points": [[2,2,-2],[2,-2,-0.6666666666666667],[-2,-2,0.6666666666666667],[-2,2,2]],
+				"closed": false,
+				"curveType": "centripetal",
+				"tension": 0.5
+			},
+			"tubularSegments": 64,
+			"radius": 1,
+			"radialSegments": 8,
+			"closed": false
+		}],
+	"materials": [
+		{
+			"uuid": "29dd3cec-616e-41b6-bfdc-0b457b86decd",
+			"type": "MeshStandardMaterial",
+			"color": 16777215,
+			"roughness": 1,
+			"metalness": 0,
+			"emissive": 0,
+			"envMapIntensity": 1,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"colorWrite": true,
+			"stencilWrite": false,
+			"stencilWriteMask": 255,
+			"stencilFunc": 519,
+			"stencilRef": 0,
+			"stencilFuncMask": 255,
+			"stencilFail": 7680,
+			"stencilZFail": 7680,
+			"stencilZPass": 7680
+		}],
+	"object": {
+		"uuid": "aa074f5d-309f-4f08-8996-6c31f872fb45",
+		"type": "Mesh",
+		"name": "Tube",
+		"layers": 1,
+		"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-11.174510500103326,2.6684345010472197,-9.264645036475672,1],
+		"up": [0,1,0],
+		"geometry": "44a46c24-88d0-4333-887c-4113936a356a",
+		"material": "29dd3cec-616e-41b6-bfdc-0b457b86decd"
+	}
+}
