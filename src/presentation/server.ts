@@ -1,6 +1,6 @@
 import path from 'path';
 import express, { Router } from 'express';
-import fileUpload from 'express-fileupload';
+//import fileUpload from 'express-fileupload';
 const bodyParser = require('body-parser');
 
 interface Options {
@@ -35,6 +35,13 @@ export class Server {
     //this.app.use( express.urlencoded({ extended: true }) ); // x-www-form-urlencoded
     this.app.use(bodyParser.json({ limit: "200mb" }));
     this.app.use(bodyParser.urlencoded({ limit: "200mb",  extended: true, parameterLimit: 1000000 }));
+
+    this.app.use((req, res, next) => {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+      next();
+    })
 
     /*this.app.use(fileUpload({
       limits: { fileSize: 50 * 1024 * 1024 },
