@@ -59,7 +59,7 @@ export class FileUploadService {
 
   }
 
-  async uploadMultiple(
+  /*async uploadMultiple(
     files: UploadedFile[],
     folder: string = 'uploads',
     validExtensions: string[] = ['json']
@@ -71,7 +71,7 @@ export class FileUploadService {
 
     return fileNames;
 
-  }
+  }*/
 
 
 

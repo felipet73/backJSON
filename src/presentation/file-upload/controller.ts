@@ -37,7 +37,7 @@ export class FileUploadController {
     const destination = path.resolve( __dirname, '../../../', 'uploads/models' );
     this.checkFolder( destination );
     fs.writeFileSync(destination + "/"+body.Nombre, JSON.stringify(body.Data));
-    res.json(body);
+    res.json({Copiado:'ok'});
     
     //const file = req.body.files.at(0) as UploadedFile;
     /*this.fileUploadService.uploadSingle( file, `uploads/${ type }` )
