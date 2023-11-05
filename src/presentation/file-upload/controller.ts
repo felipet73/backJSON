@@ -36,12 +36,10 @@ export class FileUploadController {
 
     const destination = path.resolve( __dirname, '../../../', 'uploads/models' );
     this.checkFolder( destination );
-
-    fs.writeFileSync(destination + "/programming.json", JSON.stringify(body));
+    fs.writeFileSync(destination + "/"+body.Nombre, JSON.stringify(body.Data));
     res.json(body);
-    //const file = req.body.files.at(0) as UploadedFile;
-
     
+    //const file = req.body.files.at(0) as UploadedFile;
     /*this.fileUploadService.uploadSingle( file, `uploads/${ type }` )
       .then( uploaded => res.json(uploaded) )
       .catch(  error => this.handleError( error, res ) )*/
