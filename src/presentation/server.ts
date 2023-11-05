@@ -38,6 +38,15 @@ export class Server {
     this.app.use(bodyParser.json({ limit: "200mb" }));
     this.app.use(bodyParser.urlencoded({ limit: "200mb",  extended: true, parameterLimit: 1000000 }));
 
+
+
+    this.app.use((req, res, next) => {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+      next();
+    })
+
     this.app.use(cors());
 
     /*this.app.use(fileUpload({
