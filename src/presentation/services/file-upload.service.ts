@@ -12,9 +12,9 @@ import { CustomError } from '../../domain';
 export class FileUploadService {
 
 
-  /*constructor(
-    private readonly uuid = Uuid.v4,
-  ) {}*/
+  constructor(
+    //private readonly uuid = Uuid.v4,
+  ) {}
 
   
   private checkFolder( folderPath: string ) {

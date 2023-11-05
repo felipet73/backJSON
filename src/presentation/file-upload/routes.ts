@@ -19,11 +19,15 @@ export class FileUploadRoutes {
     );
 
 
-    router.use( FileUploadMiddleware.containFiles );
-    router.use( TypeMiddleware.validTypes(['models']) );
+    //router.use( FileUploadMiddleware.containFiles );
+    //router.use( TypeMiddleware.validTypes(['models']) );
 
     
+    // Definir las rutas
+    // api/upload/single/<user|category|product>/
+    // api/upload/multiple/<user|category|product>/
     router.post( '/single/:type', controller.uploadFile );
+    //router.post( '/multiple/:type',controller.uploadMultileFiles );
 
 
 

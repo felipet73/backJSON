@@ -1,7 +1,8 @@
 import { Response, Request } from 'express';
 import { CustomError } from '../../domain';
 import { FileUploadService } from '../services/file-upload.service';
-import { UploadedFile } from 'express-fileupload';
+const fs = require('fs');
+import path from 'path';
 
 
 
@@ -11,6 +12,12 @@ export class FileUploadController {
   constructor(
     private readonly fileUploadService: FileUploadService,
   ) { }
+
+  private checkFolder( folderPath: string ) {
+    if ( !fs.existsSync(folderPath) ) {
+      fs.mkdirSync(folderPath);
+    }
+  }
 
 
   private handleError = ( error: unknown, res: Response ) => {
@@ -25,28 +32,24 @@ export class FileUploadController {
 
   uploadFile = ( req: Request, res: Response ) => {
 
-    const type = req.params.type;
-    const file = req.body.files.at(0) as UploadedFile;
+    const body = req.body;
+
+    const destination = path.resolve( __dirname, '../../../', 'uploads/models' );
+    this.checkFolder( destination );
+
+    fs.writeFileSync(destination + "/programming.json", JSON.stringify(body));
+    res.json(body);
+    //const file = req.body.files.at(0) as UploadedFile;
 
     
-    this.fileUploadService.uploadSingle( file, `uploads/${ type }` )
+    /*this.fileUploadService.uploadSingle( file, `uploads/${ type }` )
       .then( uploaded => res.json(uploaded) )
-      .catch(  error => this.handleError( error, res ) )
+      .catch(  error => this.handleError( error, res ) )*/
 
   };
 
   
-  uploadMultileFiles = ( req: Request, res: Response ) => {
-
-    const type = req.params.type;
-    const files = req.body.files as UploadedFile[];
-
-    
-    this.fileUploadService.uploadMultiple( files, `uploads/${ type }` )
-      .then( uploaded => res.json(uploaded) )
-      .catch(  error => this.handleError( error, res ) )
-
-  };
+  
 
 
 }

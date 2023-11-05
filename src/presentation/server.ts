@@ -1,6 +1,7 @@
 import path from 'path';
 import express, { Router } from 'express';
 import fileUpload from 'express-fileupload';
+const bodyParser = require('body-parser');
 
 interface Options {
   port: number;
@@ -24,21 +25,29 @@ export class Server {
     this.routes = routes;
   }
 
-  
+
   
   async start() {
     
 
     //* Middlewares
-    this.app.use( express.json() ); // raw
-    this.app.use( express.urlencoded({ extended: true }) ); // x-www-form-urlencoded
-    this.app.use(fileUpload({
+    //this.app.use( express.json() ); // raw
+    //this.app.use( express.urlencoded({ extended: true }) ); // x-www-form-urlencoded
+    this.app.use(bodyParser.json({ limit: "200mb" }));
+    this.app.use(bodyParser.urlencoded({ limit: "200mb",  extended: true, parameterLimit: 1000000 }));
+
+    /*this.app.use(fileUpload({
       limits: { fileSize: 50 * 1024 * 1024 },
-    }));
+    }));*/
 
     //* Public Folder
     this.app.use( express.static( this.publicPath ) );
 
+
+    //this.app.use( express.json() );
+    
+
+    //this.app.use(express.limit(100000000));
     //* Routes
     this.app.use( this.routes );
 
